@@ -1,0 +1,22 @@
+# S&box
+.addon_c/
+*.user
+*.suo
+
+# Build outputs
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.csproj.user
+
+# Rider
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
