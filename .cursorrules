@@ -1,0 +1,238 @@
+# Parking Guard Simulator — Cursor Rules
+
+## Projet
+
+**Parking Guard Simulator** est un jeu de gestion/simulation multijoueur développé sur **S&box** (moteur Facepunch, C#).
+
+Le joueur gère un parking : encaisser les voitures, ouvrir la barrière, gérer les emmerdes (voleurs, vandales, gitans, non-payeurs), upgrader le parking. Le jeu se joue en vue top-down et supporte le multijoueur (plusieurs joueurs dans le même parking).
+
+---
+
+## Stack technique
+
+- **Moteur** : S&box (Facepunch) — https://sbox.game/dev/doc/
+- **Langage** : C# (.NET 8, pas de MonoBehaviour — uniquement les APIs S&box)
+- **Multijoueur** : intégré S&box (Sandbox.Network)
+- **Vue** : Top-down (caméra fixe au-dessus, légèrement inclinée)
+
+---
+
+## APIs S&box essentielles — TOUJOURS utiliser ces patterns
+
+### Composants
+```csharp
+// Toujours hériter de Component, jamais MonoBehaviour
+public sealed class MyComponent : Component
+{
+    [Property] public float Speed { get; set; } = 100f; // Exposé dans l'éditeur
+    [RequireComponent] Rigidbody Body { get; set; }     // Dépendance auto
+
+    protected override void OnStart() { }
+    protected override void OnUpdate() { }         // Chaque frame (logique visuelle)
+    protected override void OnFixedUpdate() { }    // Physique / logique de jeu
+    protected override void OnDestroy() { }
+}
+```
+
+### Input
+```csharp
+Input.Down("Forward")       // Maintenu
+Input.Pressed("Jump")       // Vient d'être appuyé
+Input.AnalogMove            // Vecteur WASD (Vector3)
+```
+
+### GameObject & scène
+```csharp
+GameObject.Clone(prefab, position, rotation)  // Spawner un objet
+GameObject.Destroy()
+Component.Components.Get<T>()
+Scene.GetAllComponents<T>()
+```
+
+### Multijoueur
+```csharp
+// Ownership
+Network.IsOwner    // Est-ce que CE client possède cet objet ?
+Network.IsHost     // Est-ce le serveur ?
+
+// Synced properties (répliquées automatiquement)
+[Sync] public int Money { get; set; }
+[Sync] public bool IsOccupied { get; set; }
+
+// RPC (appel de méthode à distance)
+[Rpc.Broadcast]
+public void OnVehicleArrived(string vehicleType) { }
+
+[Rpc.Owner]
+public void CollectPayment(float amount) { }
+```
+
+### UI
+```csharp
+// Utiliser Sandbox.UI (Razor-like)
+// Composants UI dans des fichiers .razor
+// Pas de Canvas/UGUI
+```
+
+### Vecteurs & transforms
+```csharp
+WorldPosition   // Pas transform.position
+WorldRotation   // Pas transform.rotation
+WorldScale
+LocalPosition
+```
+
+---
+
+## Architecture du projet
+
+```
+Code/
+  Assembly.cs              # global usings (NE PAS MODIFIER)
+  GameManager.cs           # Singleton — boucle de jeu principale
+  CustomTopDownController.cs  # Déjà fait — contrôleur joueur top-down
+
+  Entities/
+    Vehicle.cs             # Voiture : arrivée, parking, départ, paiement
+    ParkingSpot.cs         # Place : état (libre/occupée/dégradée/sale)
+    Barrier.cs             # Barrière entrée/sortie
+    CashierBooth.cs        # Cahute du gardien
+    VendingMachine.cs      # Distributeur automatique
+
+  Systems/
+    CashSystem.cs          # Argent, tarifs, encaissements
+    PopularitySystem.cs    # Réputation — influe sur le flux de véhicules
+    EventSystem.cs         # Spawn d'événements aléatoires
+    UpgradeSystem.cs       # Gestion des upgrades achetables
+
+  Events/
+    Thief.cs              # Vole dans les coffres des voitures
+    Vandal.cs             # Dégrade des places / tagge des voitures
+    Gitan.cs              # Squatte, résistant, demande de l'argent pour partir
+    NonPayer.cs           # Cherche à sortir sans payer
+    AbandonedCar.cs       # Voiture abandonnée — bloque une place
+
+  UI/
+    HUD.cs                # Argent, popularité, événements actifs
+
+Editor/
+  Assembly.cs
+  MyEditorMenu.cs
+```
+
+---
+
+## Design du jeu — mécaniques complètes
+
+### Flux principal
+1. Une voiture arrive à la barrière
+2. Le joueur (ou la barrière automatique si upgradée) ouvre la barrière
+3. La voiture cherche une place libre et se gare
+4. Minuterie de stationnement démarre
+5. La voiture repart : le joueur encaisse à la sortie (ou caisse automatique)
+6. Argent gagné → investir dans des upgrades
+
+### Système d'argent
+- Tarif de base par heure de stationnement
+- Tarifs différenciés par type de véhicule (moto < voiture < SUV < camion)
+- Pénalité de popularité si le parking est trop sale/dégradé
+- Revenus bonus : distributeur automatique, pub, parking souterrain premium
+
+### Popularité
+- Commence à 50/100
+- Monte si : parking propre, flux fluide, pas d'incidents traités rapidement
+- Descend si : incidents non gérés, places dégradées, non-payeurs récurrents
+- Influence directement le débit de voitures (popularité basse = moins de clients)
+
+### Événements aléatoires (EventSystem)
+Chaque événement a une probabilité de spawn selon la popularité et le niveau de jeu :
+
+| Événement | Comportement | Action joueur |
+|-----------|-------------|---------------|
+| `Thief` | Cible une voiture, vole le coffre en ~30s | Courir vers lui, l'intercepter |
+| `Vandal` | Tagge les murs ou casse des rétros | Attraper avant 60s sinon place dégradée |
+| `Gitan` | S'installe dans un coin, réclame de l'argent pour partir | Payer ou appeler sécurité (upgrade) |
+| `NonPayer` | Essaie de forcer la barrière sortie | Fermer la barrière manuellement / PV |
+| `AbandonedCar` | Bloque une place indéfiniment | Appeler dépanneuse (coût) |
+
+### Upgrades (UpgradeSystem)
+Achetables avec l'argent gagné :
+
+| Upgrade | Effet | Coût indicatif |
+|---------|-------|----------------|
+| Barrière automatique | Plus besoin d'ouvrir manuellement | 500 |
+| Caisse automatique | Encaissement auto sans interaction | 800 |
+| Cahute joueur | Zone de repos, mini-jeux (casino, PC gestion) | 300 |
+| Sécurité | Garde NPC qui gère les gitans/voleurs | 1200 |
+| Distributeur automatique | Revenus passifs | 400 |
+| Éclairage | Réduit spawn d'événements nocturnes | 250 |
+| Niveau souterrain | Double la capacité, tarif premium | 2000 |
+| Dépanneuse en abonnement | Retire les voitures abandonnées plus vite | 600 |
+
+### Types de véhicules
+- Moto (1 place, tarif réduit)
+- Voiture (1 place, tarif standard)
+- SUV (1 place large, tarif +20%)
+- Camion (2 places, tarif x2, rare)
+
+### Dégradation
+- Les places de parking se dégradent avec le temps et les incidents
+- États : Propre → Usée → Dégradée → Hors service
+- Réparation coûte de l'argent et du temps
+- Saleté visible sur le sol (taches d'huile, mégots, tags)
+
+### Multijoueur
+- 2-4 joueurs dans le même parking
+- Division des rôles : un à la caisse, un à la barrière, un qui patrouille
+- Pas de système de rôles forcé — chaque joueur fait ce qu'il veut
+- L'argent est partagé (pool commun)
+- Les événements sont visibles par tous, le premier qui agit résout l'incident
+
+---
+
+## Conventions de code
+
+- **PascalCase** pour les classes, méthodes, propriétés
+- **camelCase** pour les variables locales
+- Pas de `GameObject.Find()` — utiliser `Scene.GetAllComponents<T>()` ou des références directes
+- Toujours vérifier `Network.IsHost` avant de spawner des entités en réseau
+- Les `[Sync]` properties ne doivent être modifiées que côté host
+- Préférer les événements C# (`Action`, `event`) aux appels directs entre systèmes
+- Un composant = une responsabilité (pas de classes god-object)
+
+---
+
+## Scène de base attendue
+
+La scène principale doit contenir :
+- Un sol plat (terrain de parking — marquages au sol)
+- 12 places de parking (3 rangées de 4)
+- 1 barrière entrée
+- 1 barrière sortie
+- 1 spawn de véhicules (hors-champ)
+- 1 GameObject "GameManager" avec le composant GameManager
+- 1 GameObject "Systems" avec CashSystem, PopularitySystem, EventSystem
+- Éclairage ambiant neutre (jour)
+
+---
+
+## À faire en priorité (ordre de dev recommandé)
+
+1. **GameManager** — singleton, états du jeu (Démarrage / EnJeu / GameOver)
+2. **ParkingSpot** — état libre/occupé, position de parking
+3. **Vehicle** — spawn, déplacement vers une place, départ
+4. **Barrier** — ouverture/fermeture manuelle par le joueur
+5. **CashSystem** — encaissement à la sortie
+6. **EventSystem** — spawn de thieves et non-payers en premier
+7. **PopularitySystem** — feedback visuel (panneau popularité)
+8. **UpgradeSystem** — menu d'achats
+9. **Multijoueur** — sync des états, ownership des actions
+
+---
+
+## Ressources
+
+- Doc S&box : https://sbox.game/dev/doc/
+- Composants S&box : https://sbox.game/dev/doc/scene/components/
+- Réseau S&box : https://sbox.game/dev/doc/networking/
+- Repo GitHub : https://github.com/Coodo-xyz/parking-guard-simulator
