@@ -1,22 +1,29 @@
-# S&box
-.addon_c/
-*.user
-*.suo
 
-# Build outputs
-bin/
-obj/
+# This file describes files and paths that should not be tracked by Git version control
+# https://git-scm.com/docs/gitignore
 
-# Visual Studio
-.vs/
-*.csproj.user
+# Auto-generated code editor files
+.vs/*
+.vscode/*
+*.csproj
+obj
+bin
+Properties/*
+code/obj/*
+code/Properties/*
 
-# Rider
-.idea/
+# Auto-generated asset related files
+.sbox/*
+*.generated.*
+*.*_c
+!*.shader_c
+*.los
+*.vpk
+*launchSettings.json
+*.sln
+*.slnx
 
-# OS
-.DS_Store
-Thumbs.db
+*idea
 
-# Logs
-*.log
+# Exported / standalone games
+Exports/
