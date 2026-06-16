@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "sbox": {
+      "url": "http://localhost:29015/mcp"
+    }
+  }
+}

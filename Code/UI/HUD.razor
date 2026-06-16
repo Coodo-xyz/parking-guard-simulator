@@ -1,0 +1,106 @@
+@using Sandbox
+@using Sandbox.UI
+@inherits PanelComponent
+
+<style>
+	HUD {
+		position: absolute;
+		top: 24px;
+		left: 24px;
+		width: 300px;
+		pointer-events: none;
+		font-family: Poppins;
+		color: white;
+		z-index: 100;
+	}
+</style>
+
+<root>
+	<div class="hud">
+		<div class="row money">
+			<span class="label">Money</span>
+			<span class="value">$@Money</span>
+		</div>
+		<div class="row popularity">
+			<span class="label">Popularity</span>
+			<div class="bar">
+				<div class="fill @PopularityClass" style="width: @PopularityPercent%"></div>
+			</div>
+			<span class="value">@PopularityPercent</span>
+		</div>
+		<div class="row phase">
+			<span class="label">Status</span>
+			<span class="badge @Phase">@PhaseLabel</span>
+		</div>
+	</div>
+</root>
+
+@code
+{
+	public static HUD Instance { get; private set; }
+
+	public int Money => GameManager.Instance?.CashSystem?.Money ?? 0;
+
+	public float Popularity => GameManager.Instance?.PopularitySystem?.Popularity ?? 50f;
+
+	public GamePhase Phase => GameManager.Instance?.Phase ?? GamePhase.WaitingForPlayers;
+
+	public string PhaseLabel => Phase switch
+	{
+		GamePhase.InGame => "In Game",
+		GamePhase.GameOver => "Game Over",
+		_ => "Waiting"
+	};
+
+	public string PopularityClass
+	{
+		get
+		{
+			if ( Popularity >= 60f )
+			{
+				return "high";
+			}
+
+			if ( Popularity >= 30f )
+			{
+				return "mid";
+			}
+
+			return "low";
+		}
+	}
+
+	public int PopularityPercent
+	{
+		get
+		{
+			var value = (int)Popularity;
+			if ( value < 0 )
+			{
+				return 0;
+			}
+
+			if ( value > 100 )
+			{
+				return 100;
+			}
+
+			return value;
+		}
+	}
+
+	protected override void OnStart()
+	{
+		Instance = this;
+	}
+
+	protected override void OnDestroy()
+	{
+		if ( Instance == this )
+		{
+			Instance = null;
+		}
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine( Money, PopularityPercent, Phase );
+}
