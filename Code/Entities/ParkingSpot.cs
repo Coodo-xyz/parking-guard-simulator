@@ -9,16 +9,41 @@ public sealed class ParkingSpot : Component
 	[Sync( SyncFlags.FromHost )]
 	public float DegradationLevel { get; private set; }
 
+	[Property] public int SlotIndex { get; set; } = 2;
+	[Property] public int RowIndex { get; set; }
 	[Property] public float MaxDegradation { get; set; } = 3f;
 	[Property] public float OccupiedDegradationPerSecond { get; set; } = 0.05f;
 	[Property] public float DirtyThreshold { get; set; } = 1.5f;
 
-	Vehicle currentVehicle;
 	ModelRenderer renderer;
+
+	public float SlotX => ParkingLotLayout.Instance != null
+		? ParkingLotLayout.Instance.GetSlotX( SlotIndex )
+		: WorldPosition.x;
+
+	public float RowY => ParkingLotLayout.Instance != null
+		? ParkingLotLayout.Instance.GetRowY( RowIndex )
+		: RowIndex switch
+		{
+			0 => 150f,
+			1 => 0f,
+			_ => -150f
+		};
 
 	protected override void OnStart()
 	{
 		renderer = Components.Get<ModelRenderer>();
+		SnapToLayout();
+	}
+
+	void SnapToLayout()
+	{
+		if ( ParkingLotLayout.Instance == null )
+		{
+			return;
+		}
+
+		WorldPosition = new Vector3( SlotX, RowY, WorldPosition.z );
 	}
 
 	public void Occupy( Vehicle vehicle )
@@ -33,7 +58,6 @@ public sealed class ParkingSpot : Component
 			return;
 		}
 
-		currentVehicle = vehicle;
 		IsOccupied = true;
 	}
 
@@ -49,7 +73,6 @@ public sealed class ParkingSpot : Component
 			return;
 		}
 
-		currentVehicle = null;
 		IsOccupied = false;
 	}
 

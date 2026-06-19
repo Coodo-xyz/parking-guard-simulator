@@ -8,9 +8,9 @@ public sealed class Barrier : Component
 	[Property] public string OpenSequence { get; set; } = "open";
 	[Property] public string CloseSequence { get; set; } = "close";
 	[Property] public float AnimationPlaybackRate { get; set; } = 1f;
-	[Property] public string OpenSound { get; set; } = "sound/hl2_door_open.sound";
-	[Property] public string CloseSound { get; set; } = "sound/hl2_door_close.sound";
-	[Property] public BoxCollider BlockingCollider { get; set; }
+	[Property] public string OpenSound { get; set; } = "";
+	[Property] public string CloseSound { get; set; } = "";
+	[Property] public Collider BlockingCollider { get; set; }
 
 	SkinnedModelRenderer skinnedRenderer;
 	bool lastOpenState;
@@ -18,7 +18,12 @@ public sealed class Barrier : Component
 	protected override void OnStart()
 	{
 		skinnedRenderer = Components.Get<SkinnedModelRenderer>();
-		BlockingCollider ??= Components.Get<BoxCollider>();
+		BlockingCollider = ModelColliderUtility.EnsureModelOrBox(
+			this,
+			skinnedRenderer?.Model,
+			new Vector3( 140, 24, 90 ),
+			new Vector3( 0, 0, 45 ),
+			true );
 		lastOpenState = !IsOpen;
 		ApplyAnimation();
 	}
@@ -91,7 +96,43 @@ public sealed class Barrier : Component
 			return;
 		}
 
+		if ( IsOpen && HasVehicleInZone() )
+		{
+			return;
+		}
+
 		IsOpen = !IsOpen;
+	}
+
+	bool HasVehicleInZone()
+	{
+		if ( BlockingCollider == null )
+		{
+			return false;
+		}
+
+		var zoneBounds = BlockingCollider.GetWorldBounds().Grow( 6f );
+
+		foreach ( var vehicle in Scene.GetAllComponents<Vehicle>() )
+		{
+			if ( !vehicle.GameObject.IsValid() )
+			{
+				continue;
+			}
+
+			var vehicleCollider = vehicle.Components.Get<Collider>();
+			if ( vehicleCollider == null )
+			{
+				continue;
+			}
+
+			if ( zoneBounds.Overlaps( vehicleCollider.GetWorldBounds() ) )
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	void PlayToggleSound()

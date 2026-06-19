@@ -101,4 +101,16 @@ HUD
 			color: #fecaca;
 		}
 	}
+
+	.hint
+	{
+		margin-top: 4px;
+		padding: 10px 12px;
+		border-radius: 8px;
+		font-size: 13px;
+		font-weight: 600;
+		background-color: rgba( 251, 191, 36, 0.2 );
+		color: #fde68a;
+		text-align: center;
+	}
 }

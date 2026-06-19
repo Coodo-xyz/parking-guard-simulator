@@ -1,12 +1,115 @@
 {
-  "__guid": "d5cbfd08-6829-4eef-a7d8-574e75b1d577",
+  "__guid": "cd24ebdb-3e81-42a8-bf54-5ba29fbc3880",
   "GameObjects": [
+    {
+      "__guid": "633fa436-df01-42a2-8a30-6edbc7d3371b",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "Main Camera",
+      "Position": "0,-380,64",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "233da939-6378-40dd-af17-b2da0860f546",
+          "__enabled": true,
+          "Flags": 0,
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "EnablePostProcessing": true,
+          "FieldOfView": 60,
+          "FovAxis": "Horizontal",
+          "IsMainCamera": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "PostProcessAnchor": null,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "RenderTexture": null,
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "1b22c1a8-cca4-40c6-95bf-c6ba5588fc51",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "Directional Light",
+      "Position": "0,0,200",
+      "Rotation": "-0.161728993,0.390448302,0.346828997,0.837319016",
+      "Scale": "1,1,1",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "49c48e2d-e341-48f8-ac05-03d9f74bfe67",
+          "__enabled": true,
+          "Flags": 0,
+          "Contribution": "Diffuse, Specular, Transmissive",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "1,0.97,0.92,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "ShadowBias": 0.0005,
+          "ShadowCascadeCount": 4,
+          "ShadowCascadeSplitRatio": 0.91,
+          "ShadowHardness": 0,
+          "Shadows": true,
+          "SkyColor": "0,0,0,0",
+          "Visualizer": {}
+        },
+        {
+          "__type": "Sandbox.AmbientLight",
+          "__guid": "6ce3ad52-bcfd-4c3b-890e-53b35a83dd92",
+          "__enabled": true,
+          "Flags": 0,
+          "Color": "0.32,0.34,0.38,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        }
+      ],
+      "Children": []
+    },
     {
       "__guid": "fde76e17-1db9-4ccc-a193-897fddbc6239",
       "__version": 2,
       "Flags": 0,
       "Name": "Player Controller",
-      "Position": "0,-380,0",
+      "Position": "0,200,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -336,6 +439,584 @@
       ]
     },
     {
+      "__guid": "386a3ab3-8297-4d60-809b-5282411ef444",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "Plane",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "16,20,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "9012693a-9b4d-4dd3-becd-ebc8aa93c4e6",
+          "__enabled": true,
+          "Flags": 0,
+          "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "LodOverride": null,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/generic/floor_asphalt_b.vmat",
+          "Materials": null,
+          "Model": "models/dev/plane.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "0.22,0.22,0.24,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "db3e2fd5-3adf-45d6-8fb3-baab3ff5cabc",
+          "__enabled": true,
+          "Flags": 0,
+          "Center": "0,0,0",
+          "ColliderFlags": 0,
+          "Elasticity": null,
+          "Friction": null,
+          "IsTrigger": false,
+          "Normal": "0,0,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnObjectTriggerEnter": null,
+          "OnObjectTriggerExit": null,
+          "OnTriggerEnter": null,
+          "OnTriggerExit": null,
+          "RollingResistance": null,
+          "Scale": "160,200",
+          "Static": true,
+          "Surface": null,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "6964f789-ece0-403c-8438-b91025e6f2eb",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "Environment",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 0,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": false,
+      "OwnerTransfer": 1,
+      "Components": [],
+      "Children": [
+        {
+          "__guid": "a96e1ac7-2729-4477-b26d-b1b239c5545f",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Lane Line 1",
+          "Position": "0,75,3",
+          "Rotation": "0,0,0,1",
+          "Scale": "10.5,0.0799999982,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "c7f62a22-819c-465f-a7e2-5478647f98bd",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
+              "Materials": null,
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.95,0.95,0.9,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "bd2b44dd-d6fd-489c-a924-c980e53cf79e",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Lane Line 2",
+          "Position": "0,-75,3",
+          "Rotation": "0,0,0,1",
+          "Scale": "10.5,0.0799999982,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "7b9a6a89-0458-4aba-a769-9c0705d2f861",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
+              "Materials": null,
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.95,0.95,0.9,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "ce2cd040-673d-4719-ba10-59476ddd60fc",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Lane Line 3",
+          "Position": "0,0,3.5",
+          "Rotation": "0,0,0,1",
+          "Scale": "10.5,0.119999997,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "6ebd7f9d-941c-47f5-8063-87cad77a78b3",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
+              "Materials": null,
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.95,0.95,0.9,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "99269478-efd8-4a74-8e80-50f83b18d028",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Drive Lane Left",
+          "Position": "-70,200,3",
+          "Rotation": "0,0,0,1",
+          "Scale": "0.0799999982,8,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "01b8c47d-6d98-4edb-abe7-73590b10c09e",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
+              "Materials": null,
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.95,0.95,0.9,0.9"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "a47648ee-0fb6-4b9c-aeb5-208cb5e02310",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Drive Lane Right",
+          "Position": "70,200,3",
+          "Rotation": "0,0,0,1",
+          "Scale": "0.0799999982,8,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "7eccd53a-217c-404b-aad2-1691fb526ed7",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
+              "Materials": null,
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.95,0.95,0.9,0.9"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "00440433-599b-4964-94cf-956aa6f2a3d6",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Booth",
+          "Position": "-120,300,24",
+          "Rotation": "0,0,0,1",
+          "Scale": "1.20000005,1.20000005,1.20000005",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "e9f02241-857e-4e52-b712-cee8ba48d30a",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/generic/plaster_a.vmat",
+              "Materials": null,
+              "Model": "models/dev/box.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.55,0.58,0.65,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "347e351a-61b2-4351-8e6b-5261cd018be0",
+              "__enabled": true,
+              "Flags": 0,
+              "Center": "0,0,24",
+              "ColliderFlags": 0,
+              "Elasticity": null,
+              "Friction": null,
+              "IsTrigger": false,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnObjectTriggerEnter": null,
+              "OnObjectTriggerExit": null,
+              "OnTriggerEnter": null,
+              "OnTriggerExit": null,
+              "RollingResistance": null,
+              "Scale": "48,48,48",
+              "Static": true,
+              "Surface": null,
+              "SurfaceVelocity": "0,0,0"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "b1a10001-0001-4001-8001-000000000001",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Bollard NW",
+          "Position": "-220,200,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "b1a10001-0001-4001-8001-000000000011",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Materials": null,
+              "Model": "models/sbox_props/parking_bollard/parking_bollard.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "b1a10001-0001-4001-8001-000000000002",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Bollard NE",
+          "Position": "220,200,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "b1a10001-0001-4001-8001-000000000014",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Materials": null,
+              "Model": "models/sbox_props/parking_bollard/parking_bollard.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "b1a10001-0001-4001-8001-000000000005",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Bollard Entry L",
+          "Position": "-80,320,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "b1a10001-0001-4001-8001-000000000015",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Materials": null,
+              "Model": "models/sbox_props/parking_bollard/parking_bollard.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "b1a10001-0001-4001-8001-000000000006",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Bollard Entry R",
+          "Position": "80,320,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "b1a10001-0001-4001-8001-000000000016",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Materials": null,
+              "Model": "models/sbox_props/parking_bollard/parking_bollard.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        }
+      ]
+    },
+    {
       "__guid": "7431dacf-654b-4813-bde1-9746a4a25097",
       "__version": 2,
       "Flags": 0,
@@ -440,12 +1121,19 @@
           "__guid": "c06d7f9f-8be9-464c-b882-7224ce3852d5",
           "__enabled": true,
           "Flags": 0,
+          "EntryBarrier": {
+            "_type": "component",
+            "component_id": "287e17b7-f052-4ecd-aa4c-de61293d1c85",
+            "go": "92e332a1-c76c-4580-b275-b2b71f8f936f",
+            "component_type": "Barrier"
+          },
           "ExitBarrier": {
             "_type": "component",
             "component_id": "63c8fb2f-9e8a-4111-b9c7-2e67c21b8d8e",
             "go": "fa4f71eb-eb47-4199-92ee-8a8ea4038e03",
             "component_type": "Barrier"
           },
+          "FirstSpawnDelaySeconds": 1,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -461,6 +1149,45 @@
             "_type": "gameobject",
             "go": "8ba65c1a-86d5-4f44-9e5c-0194caeb5b84"
           }
+        },
+        {
+          "__type": "ParkingLotLayout",
+          "__guid": "4b49b503-23c5-4603-bec4-622bd7dfbda8",
+          "__enabled": true,
+          "Flags": 0,
+          "BarrierClearance": 28,
+          "ConnectorY": 0,
+          "EntryBarrierY": 350,
+          "ExitBarrierY": -350,
+          "MainRoadX": 0,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "RowMiddleY": 0,
+          "RowNorthY": 150,
+          "RowSouthY": -150,
+          "SlotSpacing": 100,
+          "SlotsPerRow": 4,
+          "SpawnLeadDistance": 80,
+          "SpawnQueueSpacing": 90,
+          "VehicleHalfLength": 96.5
+        },
+        {
+          "__type": "TrafficSystem",
+          "__guid": "71641e75-a1e0-4688-9c3d-360238dd72bb",
+          "__enabled": true,
+          "Flags": 0,
+          "MaxEntryQueue": 1,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "SafeDistance": 150
         }
       ],
       "Children": []
@@ -472,7 +1199,7 @@
       "Name": "Parking Spots",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
-      "Scale": "0.75,1.1,1",
+      "Scale": "0.75,1.10000002,1",
       "Tags": "",
       "Enabled": true,
       "NetworkMode": 0,
@@ -483,13 +1210,13 @@
       "Components": [],
       "Children": [
         {
-          "__guid": "6ca2a017-6dc3-4311-923e-5088c0fb4a59",
+          "__guid": "834d688f-8fce-4e48-bebf-2f9d52533fe0",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 1",
-          "Position": "-300,150,2",
+          "Position": "-200,136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -500,7 +1227,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "3bc8d763-18b6-45a1-9232-f11fa93f9bb2",
+              "__guid": "6ab94e85-b77b-443d-a4a2-489c624bfa38",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -511,11 +1238,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 0,
+              "SlotIndex": 0
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "094af044-dbc4-4517-9538-f6e8a1eeff0f",
+              "__guid": "23e2e6cd-a134-441a-b888-982cb6b24bd0",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -544,13 +1273,13 @@
           "Children": []
         },
         {
-          "__guid": "605341d2-80b5-40a8-8bc1-f8c8ddc94d72",
+          "__guid": "3fc0a057-b657-4087-bf77-9005153c3ebb",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 2",
-          "Position": "-100,150,2",
+          "Position": "-100,136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -561,7 +1290,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "6cf72f22-2335-4dd4-81a0-b5d1cb0ab8c1",
+              "__guid": "dac1fd12-c075-4b66-bc44-ce0fdb76b2a5",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -572,11 +1301,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 0,
+              "SlotIndex": 1
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "348618e1-2765-4557-8128-3db0f3cfcf9f",
+              "__guid": "89f84292-b81d-4833-8e18-d5d4735cf04a",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -605,13 +1336,13 @@
           "Children": []
         },
         {
-          "__guid": "7895a55b-9a92-41bb-9ecf-9e39f2bb6ac3",
+          "__guid": "b6398ea9-2269-4b9a-bcd4-3329396b50e0",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 3",
-          "Position": "100,150,2",
+          "Position": "0,136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -622,7 +1353,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "75735788-ec7a-487b-baf7-d879ef6df201",
+              "__guid": "9b4654be-3757-4e91-9e27-483c3991804c",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -633,11 +1364,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 0,
+              "SlotIndex": 2
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "b405fa99-882e-4cbf-97cd-2cff35e20055",
+              "__guid": "f9c5b8a0-a269-4545-afd2-67f676e86a8e",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -666,13 +1399,13 @@
           "Children": []
         },
         {
-          "__guid": "34dd2749-fecc-42e6-8f89-2d2ae7c1a6e9",
+          "__guid": "193094c7-c757-42d7-af49-edc0ca6202ea",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 4",
-          "Position": "300,150,2",
+          "Position": "100,136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -683,7 +1416,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "9dc518df-f2b0-44f8-a020-af5390f4416e",
+              "__guid": "64cb595f-35c5-4df9-835e-b04182301aa8",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -694,11 +1427,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 0,
+              "SlotIndex": 3
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "a5fb3d70-1d51-4118-8cfa-aeb80b3564cf",
+              "__guid": "c3920b5c-e740-49bc-949c-702080d64ee3",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -727,74 +1462,13 @@
           "Children": []
         },
         {
-          "__guid": "9f9a7d14-6d9e-4995-9819-99071d2a787a",
-          "__version": 2,
-          "Flags": 0,
-          "Name": "Parking Spot 5",
-          "Position": "-300,0,2",
-          "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
-          "Tags": "",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkFlags": 0,
-          "NetworkOrphaned": 0,
-          "NetworkTransmit": true,
-          "OwnerTransfer": 1,
-          "Components": [
-            {
-              "__type": "ParkingSpot",
-              "__guid": "536ec77f-4a54-40f6-8f11-d2aa6fd4a641",
-              "__enabled": true,
-              "Flags": 0,
-              "DirtyThreshold": 1.5,
-              "MaxDegradation": 3,
-              "OccupiedDegradationPerSecond": 0.05,
-              "OnComponentDestroy": null,
-              "OnComponentDisabled": null,
-              "OnComponentEnabled": null,
-              "OnComponentFixedUpdate": null,
-              "OnComponentStart": null,
-              "OnComponentUpdate": null
-            },
-            {
-              "__type": "Sandbox.ModelRenderer",
-              "__guid": "5f66dc66-f8bd-494b-a87b-f62e64028d53",
-              "__enabled": true,
-              "Flags": 0,
-              "BodyGroups": 18446744073709551615,
-              "CreateAttachments": false,
-              "LodOverride": null,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
-              "Materials": null,
-              "Model": "models/dev/plane.vmdl",
-              "OnComponentDestroy": null,
-              "OnComponentDisabled": null,
-              "OnComponentEnabled": null,
-              "OnComponentFixedUpdate": null,
-              "OnComponentStart": null,
-              "OnComponentUpdate": null,
-              "RenderOptions": {
-                "GameLayer": true,
-                "OverlayLayer": false,
-                "BloomLayer": false,
-                "AfterUILayer": false
-              },
-              "RenderType": "On",
-              "Tint": "0.92,0.92,0.88,1"
-            }
-          ],
-          "Children": []
-        },
-        {
-          "__guid": "d439bbff-4e90-4343-95a7-7dc172ed62c3",
+          "__guid": "67a80ad9-4873-4df1-8f06-cef2f3f6a75c",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 6",
-          "Position": "-100,0,2",
+          "Position": "-200,-136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -805,7 +1479,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "946d4b93-a12c-4e7b-bff9-1385d95d7e2d",
+              "__guid": "36d9c300-7006-4da9-bfdb-4feb166911c9",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -816,11 +1490,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 2,
+              "SlotIndex": 0
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "c0057851-d900-4580-b073-24e558114639",
+              "__guid": "832eaac9-ba8b-4b33-8d93-bbc04ee7955f",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -849,13 +1525,13 @@
           "Children": []
         },
         {
-          "__guid": "3a602eb9-934f-4299-a987-8ccd49c40e49",
+          "__guid": "534aa679-f571-41ff-85f4-a1fd8279b917",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 7",
-          "Position": "100,0,2",
+          "Position": "-100,-136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -866,7 +1542,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "0a982c91-d99d-42bc-809f-333cc9ca8655",
+              "__guid": "1acbfe59-fa70-4d00-80c7-b12c194f8531",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -877,11 +1553,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 2,
+              "SlotIndex": 1
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "f6503013-aac1-4785-b7bb-327c0d7a85ad",
+              "__guid": "8e527ac0-22e9-49d8-9039-7d14144c1d09",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -910,13 +1588,13 @@
           "Children": []
         },
         {
-          "__guid": "b1a121b7-a00a-4c52-a4d4-bc36f5a88934",
+          "__guid": "36c41e4e-610d-4115-9f29-b0c3e223dd22",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 8",
-          "Position": "300,0,2",
+          "Position": "0,-136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -927,7 +1605,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "f1e9acfb-28c6-4df2-927c-8cd7516e37d0",
+              "__guid": "e8e4a576-c024-4554-80e5-42c495c2b54d",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -938,11 +1616,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 2,
+              "SlotIndex": 2
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "1d520a20-4d6c-4bae-a163-f5bf3374ad32",
+              "__guid": "b294529c-c98c-48d5-b352-11a6a0814b00",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -971,13 +1651,13 @@
           "Children": []
         },
         {
-          "__guid": "95ad2b44-27f7-4b5f-ba54-cd5d8bbc98d5",
+          "__guid": "ebbb49e2-c18e-4e7d-991c-e5076e9136e1",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 9",
-          "Position": "-300,-150,2",
+          "Position": "100,-136.363632,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1,1.39999998,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -988,7 +1668,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "d7805e9e-e8d1-48fd-9f51-4e685ae92f5a",
+              "__guid": "b37bacf0-5566-4521-8cca-8d2a69300c4e",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -999,11 +1679,13 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 2,
+              "SlotIndex": 3
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "cf0660c2-11ea-4761-89be-ce2af1a9b7d7",
+              "__guid": "22e79642-179c-421b-9027-e13d32774db8",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
@@ -1032,74 +1714,13 @@
           "Children": []
         },
         {
-          "__guid": "390dccf9-0087-4506-9a61-bfa203682d24",
-          "__version": 2,
-          "Flags": 0,
-          "Name": "Parking Spot 10",
-          "Position": "-100,-150,2",
-          "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
-          "Tags": "",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkFlags": 0,
-          "NetworkOrphaned": 0,
-          "NetworkTransmit": true,
-          "OwnerTransfer": 1,
-          "Components": [
-            {
-              "__type": "ParkingSpot",
-              "__guid": "a86b338b-c6f6-4e31-8cc0-ca2fdec05943",
-              "__enabled": true,
-              "Flags": 0,
-              "DirtyThreshold": 1.5,
-              "MaxDegradation": 3,
-              "OccupiedDegradationPerSecond": 0.05,
-              "OnComponentDestroy": null,
-              "OnComponentDisabled": null,
-              "OnComponentEnabled": null,
-              "OnComponentFixedUpdate": null,
-              "OnComponentStart": null,
-              "OnComponentUpdate": null
-            },
-            {
-              "__type": "Sandbox.ModelRenderer",
-              "__guid": "bfb1e7e9-de4e-42e4-a448-e40c896fcc88",
-              "__enabled": true,
-              "Flags": 0,
-              "BodyGroups": 18446744073709551615,
-              "CreateAttachments": false,
-              "LodOverride": null,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
-              "Materials": null,
-              "Model": "models/dev/plane.vmdl",
-              "OnComponentDestroy": null,
-              "OnComponentDisabled": null,
-              "OnComponentEnabled": null,
-              "OnComponentFixedUpdate": null,
-              "OnComponentStart": null,
-              "OnComponentUpdate": null,
-              "RenderOptions": {
-                "GameLayer": true,
-                "OverlayLayer": false,
-                "BloomLayer": false,
-                "AfterUILayer": false
-              },
-              "RenderType": "On",
-              "Tint": "0.92,0.92,0.88,1"
-            }
-          ],
-          "Children": []
-        },
-        {
-          "__guid": "d2342b47-7700-4fa5-95f9-0cc7e72c6bb0",
+          "__guid": "964bc126-bf37-4579-b7b8-35ffa370c706",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 11",
-          "Position": "100,-150,2",
+          "Position": "-200,0,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1.33333337,0.909090877,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -1110,7 +1731,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "129b64e4-cc23-407b-bc95-bca74c00d3ea",
+              "__guid": "81722dab-b1a2-4952-8b87-27050b0d9283",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -1121,18 +1742,20 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 1,
+              "SlotIndex": 0
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "91e27805-9e74-4ec0-9208-d85060006712",
+              "__guid": "9de713d6-60ec-42b3-a082-7380424de796",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
               "CreateAttachments": false,
               "LodOverride": null,
               "MaterialGroup": null,
-              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
+              "MaterialOverride": null,
               "Materials": null,
               "Model": "models/dev/plane.vmdl",
               "OnComponentDestroy": null,
@@ -1148,19 +1771,19 @@
                 "AfterUILayer": false
               },
               "RenderType": "On",
-              "Tint": "0.92,0.92,0.88,1"
+              "Tint": "1,1,1,1"
             }
           ],
           "Children": []
         },
         {
-          "__guid": "b190eba6-eaac-40dd-a635-fbc86e5e9e0c",
+          "__guid": "e0661bf0-c71f-4af9-9e71-97f589cfd87c",
           "__version": 2,
           "Flags": 0,
           "Name": "Parking Spot 12",
-          "Position": "300,-150,2",
+          "Position": "-66.6666641,0,2",
           "Rotation": "0,0,0,1",
-          "Scale": "0.75,1.1,1",
+          "Scale": "1.33333337,0.909090877,1",
           "Tags": "",
           "Enabled": true,
           "NetworkMode": 2,
@@ -1171,7 +1794,7 @@
           "Components": [
             {
               "__type": "ParkingSpot",
-              "__guid": "3f1d14f6-9e81-47a3-a034-b4599b302239",
+              "__guid": "04d995a6-9203-4637-97b5-fb02073b35c3",
               "__enabled": true,
               "Flags": 0,
               "DirtyThreshold": 1.5,
@@ -1182,18 +1805,20 @@
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "RowIndex": 1,
+              "SlotIndex": 1
             },
             {
               "__type": "Sandbox.ModelRenderer",
-              "__guid": "6c693b49-e289-4d80-9d85-7238d48fe034",
+              "__guid": "265d8ec8-24cf-4033-ae75-0ebd1b3c33c6",
               "__enabled": true,
               "Flags": 0,
               "BodyGroups": 18446744073709551615,
               "CreateAttachments": false,
               "LodOverride": null,
               "MaterialGroup": null,
-              "MaterialOverride": "materials/dev/reflectivity_50b.vmat",
+              "MaterialOverride": null,
               "Materials": null,
               "Model": "models/dev/plane.vmdl",
               "OnComponentDestroy": null,
@@ -1209,7 +1834,133 @@
                 "AfterUILayer": false
               },
               "RenderType": "On",
-              "Tint": "0.92,0.92,0.88,1"
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "1cc8e518-a980-4ed4-a394-f989a3a54378",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Parking Spot 13",
+          "Position": "66.6666641,0,2",
+          "Rotation": "0,0,0,1",
+          "Scale": "1.33333337,0.909090877,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "ParkingSpot",
+              "__guid": "bda4c111-7ac7-4f0d-9367-87e4eac3c598",
+              "__enabled": true,
+              "Flags": 0,
+              "DirtyThreshold": 1.5,
+              "MaxDegradation": 3,
+              "OccupiedDegradationPerSecond": 0.05,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RowIndex": 1,
+              "SlotIndex": 2
+            },
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "22017641-77b4-428f-8313-3502feef3049",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Materials": null,
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "b5fc2e31-6721-4d62-9b4d-05d83b9ccf94",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Parking Spot 14",
+          "Position": "200,0,2",
+          "Rotation": "0,0,0,1",
+          "Scale": "1.33333337,0.909090877,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "ParkingSpot",
+              "__guid": "969cf5e5-6dcb-4573-8291-75fb879e1579",
+              "__enabled": true,
+              "Flags": 0,
+              "DirtyThreshold": 1.5,
+              "MaxDegradation": 3,
+              "OccupiedDegradationPerSecond": 0.05,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RowIndex": 1,
+              "SlotIndex": 3
+            },
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "f6061dd1-af87-4937-b889-9199d51845c3",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Materials": null,
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
             }
           ],
           "Children": []
@@ -1238,8 +1989,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Entry Barrier",
-          "Position": "0,478.297424,13.3771973",
-          "Rotation": "0.70710659,0,0,0.707106829",
+          "Position": "93.5555344,350,0",
+          "Rotation": "-5.96046448E-08,0,0,1",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1254,32 +2005,51 @@
               "__guid": "287e17b7-f052-4ecd-aa4c-de61293d1c85",
               "__enabled": true,
               "Flags": 0,
+              "AnimationPlaybackRate": 1,
+              "BlockingCollider": null,
+              "CloseSequence": "close",
+              "CloseSound": "",
               "InteractionRange": 160,
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "OpenAnimParameter": "open",
+              "OpenSequence": "open",
+              "OpenSound": ""
             },
             {
-              "__type": "Sandbox.ModelRenderer",
+              "__type": "Sandbox.SkinnedModelRenderer",
               "__guid": "06ab49eb-d1b6-4509-9de9-ced826209f1f",
               "__enabled": true,
               "Flags": 0,
+              "AnimationGraph": null,
               "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": null,
               "CreateAttachments": false,
+              "CreateBoneObjects": false,
               "LodOverride": null,
               "MaterialGroup": null,
               "MaterialOverride": null,
               "Materials": null,
               "Model": "models/sbox_props/parking_barrier/parking_barrier.vmdl",
+              "Morphs": {},
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
               "OnComponentUpdate": null,
+              "Parameters": {
+                "bools": {},
+                "ints": {},
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "PlaybackRate": 1,
               "RenderOptions": {
                 "GameLayer": true,
                 "OverlayLayer": false,
@@ -1287,7 +2057,13 @@
                 "AfterUILayer": false
               },
               "RenderType": "On",
-              "Tint": "1,1,1,1"
+              "Sequence": {
+                "Name": null,
+                "Looping": false,
+                "Blending": false
+              },
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
             }
           ],
           "Children": []
@@ -1297,8 +2073,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Exit Barrier",
-          "Position": "5.96046448E-08,-480.000061,13.5836792",
-          "Rotation": "1.37678754E-07,0.707106829,0.70710659,1.37678796E-07",
+          "Position": "0,-350,0",
+          "Rotation": "-1.76589903E-14,2.68220873E-07,0.99999994,1.94707212E-07",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1313,32 +2089,51 @@
               "__guid": "63c8fb2f-9e8a-4111-b9c7-2e67c21b8d8e",
               "__enabled": true,
               "Flags": 0,
+              "AnimationPlaybackRate": 1,
+              "BlockingCollider": null,
+              "CloseSequence": "close",
+              "CloseSound": "",
               "InteractionRange": 160,
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
-              "OnComponentUpdate": null
+              "OnComponentUpdate": null,
+              "OpenAnimParameter": "open",
+              "OpenSequence": "open",
+              "OpenSound": ""
             },
             {
-              "__type": "Sandbox.ModelRenderer",
+              "__type": "Sandbox.SkinnedModelRenderer",
               "__guid": "548ebf7d-ab25-459b-876d-07f22839b68e",
               "__enabled": true,
               "Flags": 0,
+              "AnimationGraph": null,
               "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": null,
               "CreateAttachments": false,
+              "CreateBoneObjects": false,
               "LodOverride": null,
               "MaterialGroup": null,
               "MaterialOverride": null,
               "Materials": null,
               "Model": "models/sbox_props/parking_barrier/parking_barrier.vmdl",
+              "Morphs": {},
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
               "OnComponentUpdate": null,
+              "Parameters": {
+                "bools": {},
+                "ints": {},
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "PlaybackRate": 1,
               "RenderOptions": {
                 "GameLayer": true,
                 "OverlayLayer": false,
@@ -1346,7 +2141,13 @@
                 "AfterUILayer": false
               },
               "RenderType": "On",
-              "Tint": "1,1,1,1"
+              "Sequence": {
+                "Name": null,
+                "Looping": false,
+                "Blending": false
+              },
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
             }
           ],
           "Children": []
@@ -1358,7 +2159,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Vehicle Spawn Point",
-      "Position": "0,620,0",
+      "Position": "0,555,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -1409,12 +2210,22 @@
               "__guid": "4b0736a6-0429-44c9-a25c-51c5d2472edc",
               "__enabled": true,
               "Flags": 0,
+              "Acceleration": 420,
+              "ArrivalThreshold": 10,
+              "BaseScale": 1,
+              "Deceleration": 560,
+              "EntryBarrier": null,
               "ExitBarrier": {
                 "_type": "component",
                 "component_id": "63c8fb2f-9e8a-4111-b9c7-2e67c21b8d8e",
                 "go": "fa4f71eb-eb47-4199-92ee-8a8ea4038e03",
                 "component_type": "Barrier"
               },
+              "LookaheadGain": 0.38,
+              "LookaheadMin": 48,
+              "MaxLateralAccel": 520,
+              "MinTurnRadius": 78,
+              "MoveSpeed": 180,
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
               "OnComponentEnabled": null,
@@ -1422,6 +2233,9 @@
               "OnComponentStart": null,
               "OnComponentUpdate": null,
               "ParkingDurationSeconds": 30,
+              "PathSamplesPerSegment": 22,
+              "PaymentRange": 140,
+              "SlowdownDistance": 130,
               "Type": "Voiture"
             },
             {
@@ -1461,10 +2275,6 @@
               "Friction": null,
               "IsTrigger": false,
               "Model": "simple_car/models/simple_car_red.vmdl",
-              "RollingResistance": null,
-              "Static": false,
-              "Surface": null,
-              "SurfaceVelocity": "0,0,0",
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
               "OnComponentEnabled": null,
@@ -1474,7 +2284,11 @@
               "OnObjectTriggerEnter": null,
               "OnObjectTriggerExit": null,
               "OnTriggerEnter": null,
-              "OnTriggerExit": null
+              "OnTriggerExit": null,
+              "RollingResistance": null,
+              "Static": false,
+              "Surface": null,
+              "SurfaceVelocity": "0,0,0"
             }
           ],
           "Children": []
@@ -1502,13 +2316,13 @@
           "__guid": "dda5571c-dd73-4c15-b207-362b18256c20",
           "__enabled": true,
           "Flags": 0,
+          "AutoScreenScale": true,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
-          "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
           "ScaleStrategy": "ConsistentHeight",
@@ -1516,7 +2330,7 @@
           "ZIndex": 1000
         },
         {
-          "__type": "HUD",
+          "__type": "Sandbox.UI.HUD",
           "__guid": "252cfd3c-a6bc-456a-9b99-ca7c1a4ee677",
           "__enabled": true,
           "Flags": 0,
@@ -1528,7 +2342,7 @@
           "OnComponentUpdate": null
         },
         {
-          "__type": "Crosshair",
+          "__type": "Sandbox.UI.Crosshair",
           "__guid": "c8f4e2a1-5b3d-4e7f-9c2a-1d8e6f4b0a92",
           "__enabled": true,
           "Flags": 0,
@@ -1563,14 +2377,14 @@
       "CustomBounds": false
     },
     "GameObjectSystems": {
-      "Sandbox.Clutter.ClutterGridSystem": {
-        "Storage": {
-          "$blob": "a599c5a6-d2d0-4ef7-af64-727f12a764c9"
-        }
-      },
       "Sandbox.SelectionSetsSystem": {
         "Data": {
           "SelectionSets": []
+        }
+      },
+      "Sandbox.Clutter.ClutterGridSystem": {
+        "Storage": {
+          "$blob": "89efdf76-f17e-43fd-8703-e3f5e53e5145"
         }
       }
     }
@@ -1578,8 +2392,6 @@
   "ResourceVersion": 3,
   "Title": null,
   "Description": null,
-  "__references": [
-    "facepunch.plastic_chair#143798"
-  ],
+  "__references": [],
   "__version": 3
 }

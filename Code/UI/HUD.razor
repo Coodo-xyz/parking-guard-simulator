@@ -32,6 +32,10 @@
 			<span class="label">Status</span>
 			<span class="badge @Phase">@PhaseLabel</span>
 		</div>
+		@if ( HasPaymentPending )
+		{
+			<div class="hint">Press E near the exit to collect payment</div>
+		}
 	</div>
 </root>
 
@@ -89,6 +93,8 @@
 		}
 	}
 
+	public bool HasPaymentPending => Scene.GetAllComponents<Vehicle>().Any( v => v.IsWaitingPayment );
+
 	protected override void OnStart()
 	{
 		Instance = this;
@@ -102,5 +108,5 @@
 		}
 	}
 
-	protected override int BuildHash() => System.HashCode.Combine( Money, PopularityPercent, Phase );
+	protected override int BuildHash() => System.HashCode.Combine( Money, PopularityPercent, Phase, HasPaymentPending );
 }
