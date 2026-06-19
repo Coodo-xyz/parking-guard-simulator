@@ -9,7 +9,10 @@
   "PackageReferences": [
     "danduw.simpleredcar",
     "facepunch.parking_barrier",
-    "viasoundcorner.hl2_door_close"
+    "viasoundcorner.hl2_door_close",
+    "facepunch.parking_bollard",
+    "facepunch.fence_panel_large",
+    "subzerostudios.modularwall"
   ],
   "EditorReferences": [
     "jtc.mcp-server"
@@ -29,6 +32,6 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/parking_lot.scene"
+    "StartupScene": "scenes/parking_test.scene"
   }
 }
